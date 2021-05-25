@@ -47,7 +47,7 @@ module OmniAuth
           params['sig'] = generate_sig(endpoint, 'access_token' => access_token.token) if options[:enforce_signed_requests]
           @data ||= access_token.get("/v1#{endpoint}", params: params).parsed['data'] || {}
         else
-          @data ||= access_token.params['user']
+          @data ||= access_token.params
         end
         @data
       end
